@@ -14,7 +14,7 @@ function App() {
           <Button size={ButtonSize.Small}>Small Button</Button>
           <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Primary Button</Button>
           <Button btnType={ButtonType.Danger}>Danger Button</Button>
-          <Button btnType={ButtonType.Link} href="https://www.google.com">Link Button</Button>
+          <Button btnType={ButtonType.Link} href="https://www.google.com" target='_blank'>Link Button</Button>
           <Button btnType={ButtonType.Link} href="https://www.google.com" disabled>Disabled Link Button</Button>
         </div>
 
