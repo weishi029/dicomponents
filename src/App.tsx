@@ -10,7 +10,10 @@ function App() {
           <h3>Buttons</h3>
           <Button>Hello Button</Button>
           <Button disabled>Disabled Button</Button>
+          <Button size={ButtonSize.Large}>Large Button</Button>
+          <Button size={ButtonSize.Small}>Small Button</Button>
           <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Primary Button</Button>
+          <Button btnType={ButtonType.Danger}>Danger Button</Button>
           <Button btnType={ButtonType.Link} href="https://www.google.com">Link Button</Button>
           <Button btnType={ButtonType.Link} href="https://www.google.com" disabled>Disabled Link Button</Button>
         </div>
