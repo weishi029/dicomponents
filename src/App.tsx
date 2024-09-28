@@ -6,7 +6,7 @@ import MenuItem from './components/Menu/menuItem';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className='container'>
         <h1>DiComponents</h1>
         {/** Button Component */}
         <div>
@@ -30,7 +30,7 @@ function App() {
             <MenuItem index={2}>Menu Item 3</MenuItem>
           </Menu>
         </div>
-      </header>
+      </div>
     </div>
   );
 }
