@@ -1,4 +1,4 @@
-import React, { useState, createContext, ReactNode } from 'react';
+import React, { useState, createContext } from 'react';
 import classNames from 'classnames';
 import { MenuItemProps } from './menuItem';
 
@@ -34,6 +34,7 @@ const Menu: React.FC<IMenuProps> = ({
 
   const classes = classNames('menu', className, {
     'menu-vertical': mode === 'vertical',
+    'menu-horizontal': mode !== 'vertical',
   })
 
   const handleClick = (index: number) => {
@@ -48,12 +49,11 @@ const Menu: React.FC<IMenuProps> = ({
     onSelect: handleClick,
   }
 
-  const renderChilren = (children: ReactNode) => {
+  const renderChilren = (children: React.ReactNode) => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       const displayName = childElement.type.name
-      if(displayName === 'MenuItem') {
-        //return child
+      if(displayName === 'MenuItem' || displayName === "SubMenu") {
         return React.cloneElement(childElement, { index })
       }
       console.error('Warning: Menu has a child which is not a MenuItem component')

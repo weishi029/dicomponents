@@ -2,6 +2,7 @@ import React from 'react';
 import Button, { ButtonSize, ButtonType } from './components/Button/button';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
+import SubMenu from './components/Menu/subMenu';
 
 function App() {
   return (
@@ -23,24 +24,53 @@ function App() {
 
         {/** Menu component */}
         <div>
-          <h3>Menu</h3>
+          <h2>Menu</h2>
           <div>
-            <h4>Horizontal Menu</h4>
-            <Menu defaultIndex={0}>
-              <MenuItem index={0}>Menu Item 1</MenuItem>
-              <MenuItem index={1}>Menu Item 2</MenuItem>
-              <MenuItem index={2}>Menu Item 3</MenuItem>
-            </Menu>
+            <h3>Horizontal Menu</h3>
+            <div>
+              <h4>Simple Horizontal Menu</h4>
+              <Menu defaultIndex={0}>
+                <MenuItem>Menu Item 1</MenuItem>
+                <MenuItem>Menu Item 2</MenuItem>
+                <MenuItem>Menu Item 3</MenuItem>
+              </Menu>
+            </div>
+            <div>
+              <h4>Horizontal Menu with Sub Menu</h4>
+              <Menu defaultIndex={0}>
+                <MenuItem>Menu Item 1</MenuItem>
+                <MenuItem>Menu Item 2</MenuItem>
+                <SubMenu title='Dropdown'>
+                  <MenuItem>Dropdown item 1</MenuItem>
+                  <MenuItem>Dropdown Item 2</MenuItem>
+                </SubMenu>
+                <MenuItem>Menu Item 3</MenuItem>
+              </Menu>
+            </div>
           </div>
           <div>
-            <h4>Vertical Mennu</h4>
-            <Menu defaultIndex={0} mode='vertical'>
-              <MenuItem index={0}>Menu Item 1</MenuItem>
-              <MenuItem index={1}>Menu Item 2</MenuItem>
-              <MenuItem index={2}>Menu Item 3</MenuItem>
-            </Menu>
+            <h3>Vertical Mennu</h3>
+            <div>
+              <h4>Simple Vertical Mennu</h4>
+              <Menu defaultIndex={0} mode='vertical'>
+                <MenuItem index={0}>Menu Item 1</MenuItem>
+                <MenuItem index={1}>Menu Item 2</MenuItem>
+                <MenuItem index={2}>Menu Item 3</MenuItem>
+              </Menu>
+            </div>
+            <div>
+              <h4>Vertical Mennu with Sub Menu</h4>
+              <Menu defaultIndex={0} mode='vertical'>
+                <MenuItem>Menu Item 1</MenuItem>
+                <MenuItem>Menu Item 2</MenuItem>
+                <SubMenu title='Dropdown'>
+                  <MenuItem>Dropdown item 1</MenuItem>
+                  <MenuItem>Dropdown Item 2</MenuItem>
+                </SubMenu>
+                <MenuItem>Menu Item 3</MenuItem>
+              </Menu>
+            </div>
           </div>
-
         </div>
       </div>
     </div>

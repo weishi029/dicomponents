@@ -23,6 +23,33 @@
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
+
+  .submenu-item {
+    position: relative
+  }
+
+  .submenu {
+    list-style: none;
+    padding-left: 0;
+    white-space: nowrap;
+    border: $menu-item-active-border-width solid $menu-border-color;
+    border-radius: $border-radius;
+    background-color: $white;
+    //transition: $menu-transition
+    .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-y;
+      cursor: pointer;
+      transition: $menu-transition;
+      color: $body-color;
+      &.is-active, &:hover {
+        color: $menu-item-active-color !important;
+        border-left: 0px;
+      }
+    }
+  }
+  .submenu.menu-opened {
+    display: block;
+  }
 }
 
 .menu-vertical {
