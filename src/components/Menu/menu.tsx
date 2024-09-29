@@ -4,13 +4,13 @@ import classNames from 'classnames';
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: number) => void
 
-interface IMenuProps {
+export interface IMenuProps {
   defaultIndex?: number;
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
   onSelect?: SelectCallback;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface IMenuContext {
@@ -48,7 +48,7 @@ const Menu: React.FC<IMenuProps> = ({
   }
 
   return (
-    <ul className={classes} style={style} {...restProps}>
+    <ul className={classes} style={style} {...restProps} data-testid='test-menu'>
       <MenuContext.Provider value={menuContext}>
         {children}
       </MenuContext.Provider>
