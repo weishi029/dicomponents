@@ -24,11 +24,23 @@ function App() {
         {/** Menu component */}
         <div>
           <h3>Menu</h3>
-          <Menu defaultIndex={0}>
-            <MenuItem index={0}>Menu Item 1</MenuItem>
-            <MenuItem index={1}>Menu Item 2</MenuItem>
-            <MenuItem index={2}>Menu Item 3</MenuItem>
-          </Menu>
+          <div>
+            <h4>Horizontal Menu</h4>
+            <Menu defaultIndex={0}>
+              <MenuItem index={0}>Menu Item 1</MenuItem>
+              <MenuItem index={1}>Menu Item 2</MenuItem>
+              <MenuItem index={2}>Menu Item 3</MenuItem>
+            </Menu>
+          </div>
+          <div>
+            <h4>Vertical Mennu</h4>
+            <Menu defaultIndex={0} mode='vertical'>
+              <MenuItem index={0}>Menu Item 1</MenuItem>
+              <MenuItem index={1}>Menu Item 2</MenuItem>
+              <MenuItem index={2}>Menu Item 3</MenuItem>
+            </Menu>
+          </div>
+
         </div>
       </div>
     </div>
