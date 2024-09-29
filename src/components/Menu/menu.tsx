@@ -1,5 +1,6 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, ReactNode } from 'react';
 import classNames from 'classnames';
+import { MenuItemProps } from './menuItem';
 
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: number) => void
@@ -47,10 +48,21 @@ const Menu: React.FC<IMenuProps> = ({
     onSelect: handleClick,
   }
 
+  const renderChilren = (children: ReactNode) => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>
+      const displayName = childElement.type.name
+      if(displayName === 'MenuItem') {
+        return child
+      }
+      console.error('Warning: Menu has a child which is not a MenuItem component')
+    })
+  }
+
   return (
     <ul className={classes} style={style} {...restProps} data-testid='test-menu'>
       <MenuContext.Provider value={menuContext}>
-        {children}
+        {renderChilren(children)}
       </MenuContext.Provider>
     </ul>
   )
