@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 export interface ISubMenuProps {
   index?: number;
@@ -16,9 +17,38 @@ const SubMenu: React.FC<ISubMenuProps> =({
   children
 }) => {
   const context = useContext(MenuContext)
+  const [menuOpened, setMenuOpened] = useState(false)
   const classes = classNames('menu-item submenu-item', className, {
     'is-active': context.activeIndex === index
   })
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMenuOpened(!menuOpened)
+  }
+
+  let timer: any
+
+  const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
+    e.preventDefault()
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      setMenuOpened(toggle)
+    }, 300)
+  }
+
+  const clickEvent = context.mode === 'vertical' ? {
+    onClick: handleClick
+  } : {}
+
+  const hoverEvent = context.mode === 'horizontal' ? {
+    onMouseEnter: (e: React.MouseEvent) => {
+      handleMouse(e, true)
+    },
+    onMouseLeave: (e: React.MouseEvent) => {
+      handleMouse(e, false)
+    }
+  } : {}
 
   const renderchildren = () => {
     const childrenComponents = React.Children.map(children, (child, index) => {
@@ -30,15 +60,15 @@ const SubMenu: React.FC<ISubMenuProps> =({
     })
 
     return(
-      <ul className="submenu">
+      <ul className={ `submenu ${menuOpened ? 'menu-opened' : ''}` }>
         { childrenComponents }
       </ul>
     )
   }
 
   return (
-    <li key={index} className={classes}>
-      <div className="submenu-title">
+    <li key={index} className={classes} {...hoverEvent}>
+      <div className="submenu-title" {...clickEvent}>
         {title}
       </div>
       { renderchildren() }

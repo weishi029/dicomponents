@@ -31,6 +31,7 @@
   .submenu {
     list-style: none;
     padding-left: 0;
+    display: none;
     white-space: nowrap;
     border: $menu-item-active-border-width solid $menu-border-color;
     border-radius: $border-radius;
@@ -49,6 +50,7 @@
   }
   .submenu.menu-opened {
     display: block;
+    position: absolute;
   }
 }
 
