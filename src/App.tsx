@@ -29,7 +29,7 @@ function App() {
             <h3>Horizontal Menu</h3>
             <div>
               <h4>Simple Horizontal Menu</h4>
-              <Menu defaultIndex={0}>
+              <Menu defaultIndex='0'>
                 <MenuItem>Menu Item 1</MenuItem>
                 <MenuItem>Menu Item 2</MenuItem>
                 <MenuItem>Menu Item 3</MenuItem>
@@ -37,7 +37,7 @@ function App() {
             </div>
             <div>
               <h4>Horizontal Menu with Sub Menu</h4>
-              <Menu defaultIndex={0}>
+              <Menu defaultIndex='0' onSelect={(index)=> {alert(index)}}>
                 <MenuItem>Menu Item 1</MenuItem>
                 <MenuItem>Menu Item 2</MenuItem>
                 <SubMenu title='Dropdown'>
@@ -49,18 +49,18 @@ function App() {
             </div>
           </div>
           <div>
-            <h3>Vertical Mennu</h3>
+            <h3>Vertical Menu</h3>
             <div>
-              <h4>Simple Vertical Mennu</h4>
-              <Menu defaultIndex={0} mode='vertical'>
-                <MenuItem index={0}>Menu Item 1</MenuItem>
-                <MenuItem index={1}>Menu Item 2</MenuItem>
-                <MenuItem index={2}>Menu Item 3</MenuItem>
+              <h4>Simple Vertical Menu</h4>
+              <Menu defaultIndex='0' mode='vertical'>
+                <MenuItem index='0'>Menu Item 1</MenuItem>
+                <MenuItem index='0'>Menu Item 2</MenuItem>
+                <MenuItem index='2'>Menu Item 3</MenuItem>
               </Menu>
             </div>
             <div>
-              <h4>Vertical Mennu with Sub Menu</h4>
-              <Menu defaultIndex={0} mode='vertical'>
+              <h4>Vertical Menu with Sub Menu</h4>
+              <Menu defaultIndex='0' mode='vertical'>
                 <MenuItem>Menu Item 1</MenuItem>
                 <MenuItem>Menu Item 2</MenuItem>
                 <SubMenu title='Dropdown'>

@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import { MenuItemProps } from './menuItem';
 
 type MenuMode = 'horizontal' | 'vertical'
-type SelectCallback = (selectedIndex: number) => void
+type SelectCallback = (selectedIndex: string) => void
 
 export interface IMenuProps {
-  defaultIndex?: number;
+  defaultIndex?: string;
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
@@ -15,17 +15,17 @@ export interface IMenuProps {
 }
 
 interface IMenuContext {
-  activeIndex: number;
+  activeIndex: string;
   onSelect?: SelectCallback;
   mode?: MenuMode;
 }
 
 export const MenuContext = createContext<IMenuContext>({
-  activeIndex: 0,
+  activeIndex: '0',
 })
 
 const Menu: React.FC<IMenuProps> = ({
-  defaultIndex = 0,
+  defaultIndex = '0',
   className,
   mode = 'horizontal',
   style,
@@ -40,7 +40,7 @@ const Menu: React.FC<IMenuProps> = ({
     'menu-horizontal': mode !== 'vertical',
   })
 
-  const handleClick = (index: number) => {
+  const handleClick = (index: string) => {
     setActiveIndex(index)
     if(onSelect) {
       onSelect(index)
@@ -58,7 +58,7 @@ const Menu: React.FC<IMenuProps> = ({
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       const displayName = childElement.type.name
       if(displayName === 'MenuItem' || displayName === "SubMenu") {
-        return React.cloneElement(childElement, { index })
+        return React.cloneElement(childElement, { index: index.toString() })
       }
       console.error('Warning: Menu has a child which is not a MenuItem component')
     })

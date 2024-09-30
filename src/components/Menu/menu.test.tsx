@@ -4,7 +4,7 @@ import MenuItem from './menuItem';
 import { render, fireEvent, RenderResult } from '@testing-library/react';
 
 const testMenuProps: IMenuProps = {
-  defaultIndex: 0,
+  defaultIndex: '0',
   onSelect: jest.fn(),
   className: 'test-class'
 }
