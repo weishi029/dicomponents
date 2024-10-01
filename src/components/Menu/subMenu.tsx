@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu';
 import { MenuItemProps } from './menuItem';
@@ -21,6 +21,12 @@ const SubMenu: React.FC<ISubMenuProps> =({
   const classes = classNames('menu-item submenu-item', className, {
     'is-active': context.activeIndex === index
   })
+
+  useEffect(() => {
+    if(context.mode === 'vertical') {
+      setMenuOpened(true)
+    }
+  }, [])
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
