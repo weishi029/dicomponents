@@ -62,13 +62,12 @@ const SubMenu: React.FC<ISubMenuProps> =({
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       if(childElement.type.name === "MenuItem") {
         return React.cloneElement(childElement, { parentIndex,  index: `${parentIndex}-${index}` })
-
       }
       console.error('Warning: SubMenu has a child which is not a MenuItem component')
     })
 
     return(
-      <ul className={ `submenu ${menuOpened ? 'menu-opened' : ''}` }>
+      <ul className={ `submenu ${menuOpened ? 'menu-opened' : ''}` } data-testid='test-sub-menu'>
         { childrenComponents }
       </ul>
     )
