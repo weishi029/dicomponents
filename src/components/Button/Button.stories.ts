@@ -6,7 +6,7 @@ import Button, { ButtonSize, ButtonType } from './button';
 type ButtonPropsAndCustomArgs = React.ComponentProps<typeof Button>
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Button> = {
-  title: 'Example/Button',
+  title: 'Component/Button',
   component: Button,
   parameters: {
 
@@ -15,6 +15,22 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
+    size: {
+      options: ['default',ButtonSize.Large, ButtonSize.Small],
+      control: { type: 'radio' },
+    },
+    disabled: {
+      options: [false, true],
+      control: { type: 'radio'}
+    },
+    btnType: {
+      options: [ButtonType.Default, ButtonType.Primary, ButtonType.Danger, ButtonType.Link],
+      control: { type: 'radio'}
+    },
+    href: {
+      options: [null, 'https://www.google.com'],
+      control: { type: 'radio'}
+    }
 
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
@@ -25,66 +41,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Default: Story = {
-  name: 'Default Button',
-  args: {
-    children: "Default"
-  }
-}
-
-export const DefaultDisabled: Story = {
-  name: 'Default Button Disabled',
-  args: {
-    disabled: true,
-    children: "Default"
-  }
-}
-
-export const Large: Story = {
-  name: 'Default Button Large',
-  args: {
-    size: ButtonSize.Large,
-    children: "Large"
-  }
-}
-
-export const Small: Story = {
-  name: 'Default Button Small',
-  args: {
-    size: ButtonSize.Small,
-    children: "Small"
-  }
-}
-
 export const Primary: Story = {
-  name: 'Primary Button',
+  name: 'Button',
   args: {
     btnType: ButtonType.Primary,
-    children: "Primary"
-  }
-}
-
-export const Danger: Story = {
-  name: 'Button Danger',
-  args: {
-    btnType: ButtonType.Danger,
-    children: "Danger"
-  }
-}
-
-export const Link: Story = {
-  name: 'Button Link',
-  args: {
-    btnType: ButtonType.Link,
-    children: "Link"
-  }
-}
-
-export const LinkDisabled: Story = {
-  name: 'Button Link Disabled',
-  args: {
-    btnType: ButtonType.Link,
-    disabled: true,
-    children: "Link"
+    children: "Button"
   }
 }
